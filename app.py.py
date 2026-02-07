@@ -103,7 +103,7 @@ def get_employee(event):
     if not item:
         return response(
             404,
-            {"message": "Employee not found"}
+            {"message": "Employee not Found"}
         )
 
    
