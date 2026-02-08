@@ -22,7 +22,7 @@ jobs:
         run: |
           aws lambda update-function-code \
             --function-name s3andec2 \
-            --image-uri 633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops
+            --image-uri 633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops:latest
 
       - name: Test Invocation
         run: |
