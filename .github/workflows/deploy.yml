@@ -22,7 +22,7 @@ jobs:
       - name: Update Lambda Image
         run: |
           aws lambda update-function-code \
-            --function-name s3andec2 \
+            --function-name datagrokr-event-logger \
             --image-uri 633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops:latest
 
       - name: Test Invocation
