@@ -21,13 +21,13 @@ jobs:
       - name: Update Lambda Image
         run: |
           aws lambda update-function-code \
-            --function-name <LAMBDA_NAME> \
-            --image-uri <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops:latest
+            --function-name s3andec2 \
+            --image-uri 633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops
 
       - name: Test Invocation
         run: |
           aws lambda invoke \
-            --function-name <LAMBDA_NAME> \
+            --function-name s3andec2 \
             response.json
 
           cat response.json
