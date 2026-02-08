@@ -29,7 +29,6 @@ jobs:
       - name: Tag & Push
         run: |
           docker tag datagrokr-intern-devops:latest \
-            <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops:latest
-
+              633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops
           docker push \
-            <ACCOUNT_ID>.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops:latest
+              633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops
