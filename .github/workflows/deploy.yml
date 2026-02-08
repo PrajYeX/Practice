@@ -1,0 +1,33 @@
+name: Deploy Lambda
+
+on:
+  workflow_run:
+    workflows: ["CI - Build & Push Image"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - name: Update Lambda Image
+        run: |
+          aws lambda update-function-code \
+            --function-name s3andec2 \
+            --image-uri 633415687263.dkr.ecr.ap-south-1.amazonaws.com/datagrokr-intern-devops
+
+      - name: Test Invocation
+        run: |
+          aws lambda invoke \
+            --function-name s3andec2 \
+            response.json
+
+          cat response.json
